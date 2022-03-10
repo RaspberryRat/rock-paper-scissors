@@ -2,15 +2,11 @@ let computerChoice = computerPlay();
 let playerChoice = 'rock';
 
 
-
 function computerPlay() {
   let weapon = ['rock', 'paper', 'scissors'];
   let randomWeapon = Math.floor(Math.random() * weapon.length);
   return weapon[randomWeapon];
 }
-
-
-
 
 
 function playGame(playerChoice, computerChoice) {
@@ -36,3 +32,13 @@ function playGame(playerChoice, computerChoice) {
     return ("You must enter 'rock', 'paper', or 'scissors'.");
   }
 }
+
+
+function game() {
+  for (let i = 1; i <= 5; i++) {
+    console.log(playGame(playerChoice, computerChoice));
+    console.log(`round # ${i}.`);
+  }
+}
+
+console.log(game());
