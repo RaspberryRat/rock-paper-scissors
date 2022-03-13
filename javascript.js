@@ -2,6 +2,7 @@ let computerChoice = computerPlay();
 let playerChoice = 'Rock';
 
 
+
 function computerPlay() {
   let weapon = ['Rock', 'Paper', 'Scissors'];
   return weapon[Math.floor(Math.random() * weapon.length)];
@@ -13,9 +14,14 @@ let computerWins = 0;
 
 function playGame(playerChoice, computerChoice) {
   computerChoice = computerPlay();
-  //winning scenarios
+  //To keep first letter of player choice uppercase so looks better in console.
+  firstLetter = playerChoice.substring(0, 1);
+  upperFirstLetter = firstLetter.toUpperCase();
+  playerChoice = upperFirstLetter + playerChoice.substring(1);
+  //Put choices in lowercase so no issues with comparisons
   playerChoiceFixed = playerChoice.toLowerCase();
   computerChoiceFixed = computerChoice.toLowerCase();
+  //winning scenarios
   if ((playerChoiceFixed == 'rock' && computerChoiceFixed == 'scissors') ||
       (playerChoiceFixed == 'scissors' && computerChoiceFixed == 'paper') ||
       (playerChoiceFixed == 'paper' && computerChoiceFixed == 'rock')) {
@@ -37,6 +43,7 @@ function playGame(playerChoice, computerChoice) {
 function game() {
   for (let i = 1; i <= 5; i++) {
     let round = i;
+    playerChoice = prompt('Please choose rock, paper, or scissors.', '')
     console.log(`Round # ${round}.`);
     playGame(playerChoice, computerChoice);
     console.log(`The score is ${playerWins} for you and ${computerWins} for your opponent.`);
