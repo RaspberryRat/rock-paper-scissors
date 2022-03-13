@@ -3,8 +3,8 @@ let playerChoice = 'Rock';
 
 
 function computerPlay() {
-  let weapon = ['rock', 'paper', 'scissors'];
-  return weapon[~~(Math.random() * weapon.length)];
+  let weapon = ['Rock', 'Paper', 'Scissors'];
+  return weapon[Math.floor(Math.random() * weapon.length)];
   
 }
 
@@ -15,19 +15,19 @@ function playGame(playerChoice, computerChoice) {
   computerChoice = computerPlay();
   //winning scenarios
   playerChoiceFixed = playerChoice.toLowerCase();
-  //let choices = `You chose ${playerChoiceFixed} and the computer chose ${computerChoice}.`;
-  if ((playerChoiceFixed == 'rock' && computerChoice == 'scissors') ||
-      (playerChoiceFixed == 'scissors' && computerChoice == 'paper') ||
-      (playerChoiceFixed == 'paper' && computerChoice == 'rock')) {
-      playerWins += 1;
-      console.log(`${playerChoice} beats ${computerChoice}! You win!`);
+  computerChoiceFixed = computerChoice.toLowerCase();
+  if ((playerChoiceFixed == 'rock' && computerChoiceFixed == 'scissors') ||
+      (playerChoiceFixed == 'scissors' && computerChoiceFixed == 'paper') ||
+      (playerChoiceFixed == 'paper' && computerChoiceFixed == 'rock')) {
+      playerWins ++;
+      console.log(`${playerChoice} beats ${computerChoiceFixed}! You win!`);
   //losing scenarios
-  } else if ((playerChoiceFixed == 'rock' && computerChoice == 'paper') ||
-  (playerChoiceFixed == 'paper' && computerChoice == 'scissors') ||
-  (playerChoiceFixed == 'scissors' && computerChoice == 'rock')) {
-    computerWins =+ 1;
+  } else if ((playerChoiceFixed == 'rock' && computerChoiceFixed == 'paper') ||
+      (playerChoiceFixed == 'paper' && computerChoiceFixed == 'scissors') ||
+      (playerChoiceFixed == 'scissors' && computerChoiceFixed == 'rock')) {
+    computerWins ++;
     console.log(`${computerChoice} beats ${playerChoiceFixed}. You lose this round.`);
-  } else if (playerChoiceFixed == computerChoice) {
+  } else if (playerChoiceFixed == computerChoiceFixed) {
     console.log(`You both chose ${playerChoiceFixed}, and tied! Try again?`);
   } else {
     console.log("You must enter 'rock', 'paper', or 'scissors'.");
