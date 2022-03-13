@@ -4,28 +4,31 @@ let playerChoice = 'rock';
 
 function computerPlay() {
   let weapon = ['rock', 'paper', 'scissors'];
-  let randomWeapon = Math.floor(Math.random() * weapon.length);
-  return weapon[randomWeapon];
+  return weapon[~~(Math.random() * weapon.length)];
+  
 }
 
+let playerWins = 0;
+let computerWins = 0;
 
 function playGame(playerChoice, computerChoice) {
-  //winning scenarios
+  computerChoice = computerPlay();
   playerChoiceFixed = playerChoice.toLowerCase();
   let choices = `You chose ${playerChoiceFixed} and the computer chose ${computerChoice}.`;
+  //winning scenarios
   if (playerChoiceFixed == 'rock' && computerChoice == 'scissors') {
-      return (`${choices} Rock beats scissors! You win!`);
+      return playerWins += 1;
   } else if (playerChoiceFixed == 'scissors' && computerChoice == 'paper') {
-      return (`${choices} Scissors beats paper! You win!`);
+      return playerWins += 1;
   } else if (playerChoiceFixed == 'paper' && computerChoice == 'rock') {
-      return ('${choices} Paper beats rock! You win!');
+      return playerWins += 1;
   //losing scenarios
   } else if (playerChoiceFixed == 'rock' && computerChoice == 'paper') {
-    return (`${choices} You lose. Paper beats rock. Try again?`);
+    return computerWins += 1;
   } else if (playerChoiceFixed == 'paper' && computerChoice == 'scissors') {
-    return (`${choices} You lose. Scissors beats paper. Try again?`);
+    return computerWins += 1;
   } else if (playerChoiceFixed == 'scissors' && computerChoice == 'rock') {
-    return (`${choices} You lose. Rock beats scissors. Try again?`);
+    return computerWins += 1;
   } else if (playerChoiceFixed == computerChoice) {
     return (`${choices} You both chose ${playerChoiceFixed}, and tied! Try again?`);
   } else {
@@ -36,9 +39,18 @@ function playGame(playerChoice, computerChoice) {
 
 function game() {
   for (let i = 1; i <= 5; i++) {
+    let round = i;
+    console.log(`Round # ${round}.`);
     console.log(playGame(playerChoice, computerChoice));
-    console.log(`round # ${i}.`);
+    console.log(`You chose ${playerChoice} and your opponent chose ${computerChoice}`);
+    console.log(`The winner of round # ${round} is `);
   }
+  if (playerWins > computerWins) {
+    console.log(`You won ${playerWins} rounds. Your opponent won ${computerWins} rounds. You won the game! Great job!`);
+  } else if (playerWins < computerWins) {
+    console.log(`You won ${playerWins} rounds. Your opponent won ${computerWins} rounds. You lost. So sad.`);
+  } else {
+    console.log(`You won ${playerWins} rounds. Your opponent won ${computerWins} rounds. Whew a tie game! Try again?`)}
 }
 
 console.log(game());
