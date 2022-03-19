@@ -62,6 +62,7 @@ function playGame(playerChoice, computerChoice) {
       scoreBox.appendChild(tieGame); 
     }
      disableButtons();
+     newGame();
   }
 
 }
@@ -87,13 +88,24 @@ buttons.forEach((button) => {
 const playerScoreContain = document.querySelector('#playerScore');
 const computerScoreContain = document.querySelector('#computerScore');
 const tiedRounds = document.querySelector('#ties');
+const retryBtn = document.createElement('button');
 
 playerScoreContain.textContent = playerWins;
 computerScoreContain.textContent = computerWins;
 tiedRounds.textContent = ties;
 
+retryBtn.onclick = () => history.go(0);
+
+
+
 function disableButtons() {
   buttons.forEach((button) => {
     button.disabled = true;
   });
+}
+
+function newGame() {
+  retryBtn.textContent = 'Would you like to play again?';
+  const body = document.querySelector('body');
+  body.appendChild(retryBtn);
 }
