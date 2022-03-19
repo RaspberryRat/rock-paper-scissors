@@ -45,7 +45,7 @@ function playGame(playerChoice, computerChoice) {
   computerScoreContain.textContent = computerWins;
   tiedRounds.textContent = ties;
   if (playerWins + computerWins + ties == 5) {
-    const scoreBox = document.querySelector('#score');
+    const scoreBox = document.querySelector('.score');
     if (playerWins > computerWins) {
       //create a div
       //add text content to declare winner
@@ -108,6 +108,7 @@ function disableButtons() {
 
 function newGame() {
   retryBtn.textContent = 'Would you like to play again?';
-  const body = document.querySelector('body');
-  body.appendChild(retryBtn);
+  retryBtn.setAttribute('id','retry');
+  announcer.appendChild(retryBtn);
+  
 }

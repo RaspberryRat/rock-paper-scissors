@@ -1,0 +1,44 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: "Roboto", sans-serif;
+  color: white;
+}
+
+body {
+  background-color: blueviolet;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 100px;
+  justify-content: center;
+}
+
+.weaponContainer {
+  display: flex;
+
+}
+
+.score, 
+#announcer,
+p {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 3px;
+}
+
+button {
+  margin: 20px;
+  padding: 5px;
+  color: black;
+}
+
+.score {
+
+}
