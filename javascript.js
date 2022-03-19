@@ -1,5 +1,5 @@
 let computerChoice = computerPlay();
-let playerChoice = 'Rock';
+let playerChoice;
 
 
 
@@ -40,21 +40,21 @@ function playGame(playerChoice, computerChoice) {
   }
 }
 
-function game() {
-  for (let i = 1; i <= 5; i++) {
-    let round = i;
-    playerChoice = prompt('Please choose rock, paper, or scissors.', '')
-    console.log(`Round # ${round}.`);
-    playGame(playerChoice, computerChoice);
-    console.log(`The score is ${playerWins} for you and ${computerWins} for your opponent.`);
-  }
-  if (playerWins > computerWins) {
-    console.log(`You won ${playerWins} rounds. Your opponent won ${computerWins} rounds. You won the game! Great job!`);
-  } else if (playerWins < computerWins) {
-    console.log(`You won ${playerWins} rounds. Your opponent won ${computerWins} rounds. You lost. So sad.`);
-  } else {
-    console.log(`You won ${playerWins} rounds. Your opponent won ${computerWins} rounds. Whew a tie game! Try again?`);
-  }
-}
+const buttons = document.querySelectorAll('button');
 
-game();
+buttons.forEach((button) => {
+  button.addEventListener('click', () => {
+    console.log(button.id);
+    if (button.id == 1) {
+      playerChoice = 'Rock'
+    } else if (button.id == 2) {
+      playerChoice = 'Paper'
+    } else if (button.id == 3) {
+      playerChoice = 'Scissors'
+  } else {
+    console.log('ERROR');
+  }
+  playGame(playerChoice, computerChoice);
+
+  });
+});
