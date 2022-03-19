@@ -43,6 +43,27 @@ function playGame(playerChoice, computerChoice) {
   playerScoreContain.textContent = playerWins;
   computerScoreContain.textContent = computerWins;
   tiedRounds.textContent = ties;
+  if (playerWins + computerWins + ties == 5) {
+    const scoreBox = document.querySelector('#score');
+    if (playerWins > computerWins) {
+      //create a div
+      //add text content to declare winner
+      //turn off buttons
+      const winner = document.createElement('div');
+      winner.textContent = 'You won the game! Congratulations!';
+      scoreBox.appendChild(winner);    
+    } else if (computerWins > playerWins) {
+      const loser = document.createElement('div');
+      loser.textContent = 'You lost the game. Such disappointment.';
+      scoreBox.appendChild(loser); 
+    } else {
+      const tieGame = document.createElement('div');
+      tieGame.textContent = 'The game was a tie!';
+      scoreBox.appendChild(tieGame); 
+    }
+     disableButtons();
+  }
+
 }
 
 const buttons = document.querySelectorAll('button');
@@ -70,3 +91,9 @@ const tiedRounds = document.querySelector('#ties');
 playerScoreContain.textContent = playerWins;
 computerScoreContain.textContent = computerWins;
 tiedRounds.textContent = ties;
+
+function disableButtons() {
+  buttons.forEach((button) => {
+    button.disabled = true;
+  });
+}
