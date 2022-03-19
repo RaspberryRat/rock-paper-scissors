@@ -11,6 +11,7 @@ function computerPlay() {
 
 let playerWins = 0;
 let computerWins = 0;
+let ties = 0;
 
 function playGame(playerChoice, computerChoice) {
   computerChoice = computerPlay();
@@ -35,9 +36,13 @@ function playGame(playerChoice, computerChoice) {
     console.log(`${computerChoice} beats ${playerChoiceFixed}. You lose this round.`);
   } else if (playerChoiceFixed == computerChoiceFixed) {
     console.log(`You both chose ${playerChoiceFixed}, and tied! Try again?`);
+    ties ++;
   } else {
     console.log("You must enter 'rock', 'paper', or 'scissors'.");
   }
+  playerScoreContain.textContent = playerWins;
+  computerScoreContain.textContent = computerWins;
+  tiedRounds.textContent = ties;
 }
 
 const buttons = document.querySelectorAll('button');
@@ -55,6 +60,13 @@ buttons.forEach((button) => {
     console.log('ERROR');
   }
   playGame(playerChoice, computerChoice);
-
   });
 });
+
+const playerScoreContain = document.querySelector('#playerScore');
+const computerScoreContain = document.querySelector('#computerScore');
+const tiedRounds = document.querySelector('#ties');
+
+playerScoreContain.textContent = playerWins;
+computerScoreContain.textContent = computerWins;
+tiedRounds.textContent = ties;
