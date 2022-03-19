@@ -27,19 +27,20 @@ function playGame(playerChoice, computerChoice) {
       (playerChoiceFixed == 'scissors' && computerChoiceFixed == 'paper') ||
       (playerChoiceFixed == 'paper' && computerChoiceFixed == 'rock')) {
       playerWins ++;
-      console.log(`${playerChoice} beats ${computerChoiceFixed}! You win!`);
+      announcer.textContent = `${playerChoice} beats ${computerChoiceFixed}! You win!`;
   //losing scenarios
   } else if ((playerChoiceFixed == 'rock' && computerChoiceFixed == 'paper') ||
       (playerChoiceFixed == 'paper' && computerChoiceFixed == 'scissors') ||
       (playerChoiceFixed == 'scissors' && computerChoiceFixed == 'rock')) {
     computerWins ++;
-    console.log(`${computerChoice} beats ${playerChoiceFixed}. You lose this round.`);
+    announcer.textContent = `${computerChoice} beats ${playerChoiceFixed}. You lose this round.`;
   } else if (playerChoiceFixed == computerChoiceFixed) {
-    console.log(`You both chose ${playerChoiceFixed}, and tied! Try again?`);
+    announcer.textContent = `You both chose ${playerChoiceFixed}, and tied! Try again?`;
     ties ++;
   } else {
-    console.log("You must enter 'rock', 'paper', or 'scissors'.");
+    announcer.textContent = "You must enter 'rock', 'paper', or 'scissors'.";
   }
+  body.appendChild(announcer);
   playerScoreContain.textContent = playerWins;
   computerScoreContain.textContent = computerWins;
   tiedRounds.textContent = ties;
@@ -71,7 +72,6 @@ const buttons = document.querySelectorAll('button');
 
 buttons.forEach((button) => {
   button.addEventListener('click', () => {
-    console.log(button.id);
     if (button.id == 1) {
       playerChoice = 'Rock'
     } else if (button.id == 2) {
@@ -89,6 +89,8 @@ const playerScoreContain = document.querySelector('#playerScore');
 const computerScoreContain = document.querySelector('#computerScore');
 const tiedRounds = document.querySelector('#ties');
 const retryBtn = document.createElement('button');
+const announcer = document.querySelector('#announcer');
+const body = document.querySelector('body');
 
 playerScoreContain.textContent = playerWins;
 computerScoreContain.textContent = computerWins;
