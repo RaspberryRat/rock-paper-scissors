@@ -7,7 +7,7 @@
 }
 
 body {
-  background-color: blueviolet;
+  background-color: rgb(138, 43, 226);;
 }
 
 .container {
@@ -33,12 +33,23 @@ p {
   padding: 3px;
 }
 
-button {
+.gameButton {
   margin: 20px;
   padding: 5px;
   color: black;
+  outline: none;
+  background-color: rgb(138, 43, 226);
+  background: transparent;
+  border-color: rgb(138, 43, 226);;
+  border-style: solid;
 }
 
-.score {
-
+.header {
+  display: flex;
+  justify-content: space-around;
+  padding: 18px;
 }
+
+
+
+

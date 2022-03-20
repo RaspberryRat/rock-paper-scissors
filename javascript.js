@@ -52,16 +52,20 @@ function playGame(playerChoice, computerChoice) {
       //turn off buttons
       const winner = document.createElement('div');
       winner.textContent = 'You won the game! Congratulations!';
+      winner.setAttribute('style', 'marginTop: 50px');
       scoreBox.appendChild(winner);    
     } else if (computerWins > playerWins) {
       const loser = document.createElement('div');
       loser.textContent = 'You lost the game. Such disappointment.';
       scoreBox.appendChild(loser); 
+      loser.setAttribute('style', 'marginTop: 50px');
     } else {
       const tieGame = document.createElement('div');
       tieGame.textContent = 'The game was a tie!';
       scoreBox.appendChild(tieGame); 
+      tieGame.setAttribute('style', 'marginTop: 50px');
     }
+
      disableButtons();
      newGame();
   }
@@ -109,6 +113,6 @@ function disableButtons() {
 function newGame() {
   retryBtn.textContent = 'Would you like to play again?';
   retryBtn.setAttribute('id','retry');
-  announcer.appendChild(retryBtn);
-  
+  announcer.appendChild(retryBtn);  
+  retryBtn.setAttribute('style', 'color: black; padding: 10px; margin: 10px');
 }
