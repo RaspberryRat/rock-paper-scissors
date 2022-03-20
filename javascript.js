@@ -15,6 +15,7 @@ let ties = 0;
 
 function playGame(playerChoice, computerChoice) {
   computerChoice = computerPlay();
+  displayWeapon();
   //To keep first letter of player choice uppercase so looks better in console.
   firstLetter = playerChoice.substring(0, 1);
   upperFirstLetter = firstLetter.toUpperCase();
@@ -40,7 +41,6 @@ function playGame(playerChoice, computerChoice) {
   } else {
     announcer.textContent = "You must enter 'rock', 'paper', or 'scissors'.";
   }
-  body.appendChild(announcer);
   playerScoreContain.textContent = playerWins;
   computerScoreContain.textContent = computerWins;
   tiedRounds.textContent = ties;
@@ -69,7 +69,7 @@ function playGame(playerChoice, computerChoice) {
      disableButtons();
      newGame();
   }
-
+  container.appendChild(announcer);
 }
 
 const buttons = document.querySelectorAll('button');
@@ -85,9 +85,46 @@ buttons.forEach((button) => {
   } else {
     console.log('ERROR');
   }
+  button.classList.add('chosen');
   playGame(playerChoice, computerChoice);
   });
 });
+
+function displayWeapon() {
+  if (playerChoice === 'Rock') {
+    playerChoiceImg.src = "./img/rock.jpg";
+    playerChoiceDesc.textContent = `You chose ${playerChoice}!`;
+  } else if (playerChoice === 'Paper') {
+    playerChoiceImg.src = './img/paper.jpg';
+    playerChoiceDesc.textContent = `You chose ${playerChoice}!`;
+  } else if (playerChoice === 'Scissors') {
+    playerChoiceImg.src = './img/scissors.jpg';
+    playerChoiceDesc.textContent = `You chose ${playerChoice}!`;
+  }
+  if (computerChoice === 'Rock') {
+    cpuChoiceImg.src = "./img/rock.jpg";
+    cpuChoiceDesc.textContent = `Your opponent chose ${computerChoice}.`;
+  } else if (computerChoice === 'Paper') {
+    cpuChoiceImg.src = './img/paper.jpg';
+    cpuChoiceDesc.textContent = `Your opponent chose ${computerChoice}.`;
+  } else if (computerChoice === 'Scissors') {
+    cpuChoiceImg.src = './img/scissors.jpg';
+    cpuChoiceDesc.textContent = `Your opponent chose ${computerChoice}.`;
+  }
+  playerChoiceImg.width = '250';
+  cpuChoiceImg.width = '250';
+  playerWeaponBox.appendChild(playerChoiceDesc);
+  playerWeaponBox.appendChild(playerChoiceImg);
+  cpuWeaponBox.appendChild(cpuChoiceDesc);
+  cpuWeaponBox.appendChild(cpuChoiceImg);
+  setTimeout(() => {
+    playerWeaponBox.removeChild(playerChoiceImg);
+    cpuWeaponBox.removeChild(cpuChoiceImg);
+    playerWeaponBox.removeChild(playerChoiceDesc);
+    cpuWeaponBox.removeChild(cpuChoiceDesc);
+    
+  }, 1500);
+}
 
 const playerScoreContain = document.querySelector('#playerScore');
 const computerScoreContain = document.querySelector('#computerScore');
@@ -95,6 +132,15 @@ const tiedRounds = document.querySelector('#ties');
 const retryBtn = document.createElement('button');
 const announcer = document.querySelector('#announcer');
 const body = document.querySelector('body');
+const container = document.querySelector('#container');
+const btns = document.querySelectorAll('button');
+const playerWeaponBox = document.querySelector('.playerWeapon');
+const cpuWeaponBox = document.querySelector('.cpuWeapon');
+const playerChoiceImg = document.createElement('img');
+const cpuChoiceImg = document.createElement('img');
+const playerChoiceDesc = document.createElement('div');
+const cpuChoiceDesc = document.createElement('div');
+
 
 playerScoreContain.textContent = playerWins;
 computerScoreContain.textContent = computerWins;
@@ -116,3 +162,15 @@ function newGame() {
   announcer.appendChild(retryBtn);  
   retryBtn.setAttribute('style', 'color: black; padding: 10px; margin: 10px');
 }
+
+btns.forEach(button => button.addEventListener('transitionend', removeTransition));
+
+function removeTransition(e) {
+  if (e.propertyName !== 'transform') return;
+  e.target.classList.remove('chosen');
+}
+
+
+
+
+  

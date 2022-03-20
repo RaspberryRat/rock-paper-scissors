@@ -7,26 +7,34 @@
     <link rel="stylesheet" href="./style.css">
   </head>
   <body>
-    <div class="header">Are you ready to play ROCK PAPER SCISSORS?!</div>
-
-    <div class="container">
-      <div class="weaponContainer">
-        <button id="1" class="gameButton"><img src="./img/rock.jpg" alt="ROCK" width="100px"></button>
-        <button id="2" class="gameButton"><img src="./img/paper.jpg" alt="PAPER" width="100px"></button>
-        <button id="3" class="gameButton"><img src="./img/scissors.jpg" alt="SCISSORS" width="100px"></button>
-      </div>
-
-      <div class="score">
-        <p>Player Score: </p>
-        <p id="playerScore"></p>
-        <p>Computer Score:</p>
-        <p id="computerScore"></p>
-        <p> Tied Rounds</p>
-        <p id="ties"></p>
-      </div>
-
-      <div id="announcer"></div>
+    <div class="header">Are you ready to play ROCK PAPER SCISSORS?!
+      <p class="subheader"> Choose your weapon and play a best of three game</p>
     </div>
+    
+    <div class="large-container">
+      <div class="playerWeapon"></div>
+      <div class="container">
+        <div class="weaponContainer">
+          <button id="1" class="gameButton"><img src="./img/rock.jpg" alt="ROCK" width="100px"></button>
+          <button id="2" class="gameButton"><img src="./img/paper.jpg" alt="PAPER" width="100px"></button>
+          <button id="3" class="gameButton"><img src="./img/scissors.jpg" alt="SCISSORS" width="100px"></button>
+        </div>
+
+        <div class="score">
+          <p>Player Score: </p>
+          <p id="playerScore"></p>
+          <p>Computer Score:</p>
+          <p id="computerScore"></p>
+          <p> Tied Rounds</p>
+          <p id="ties"></p>
+        </div>
+
+        <div id="announcer"></div>
+      </div>
+      <div class="cpuWeapon"></div>
+    </div>
+
+    <div class="footer">Smelly Industries 2022</div>
 
     <script>
 
