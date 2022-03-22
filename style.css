@@ -89,6 +89,8 @@ p {
   font-style: italic;
 }
 
+
+/* this and button tranisiton show a yellow highlight around the chosen weapon when clicked */
 .chosen {
   transform: scale(1.2);
   border-color: #ffc600;
