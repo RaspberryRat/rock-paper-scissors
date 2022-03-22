@@ -100,7 +100,7 @@ button {
 }
 
 .playerWeapon,
-cpuWeapon {
+.cpuWeapon {
   padding: 10px;
   display: flex; 
   margin: 20px;

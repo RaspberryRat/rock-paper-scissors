@@ -47,9 +47,6 @@ function playGame(playerChoice, computerChoice) {
   if (playerWins + computerWins + ties == 5) {
     const scoreBox = document.querySelector('.score');
     if (playerWins > computerWins) {
-      //create a div
-      //add text content to declare winner
-      //turn off buttons
       const winner = document.createElement('div');
       winner.textContent = 'You won the game! Congratulations!';
       winner.setAttribute('style', 'marginTop: 50px');
@@ -65,7 +62,7 @@ function playGame(playerChoice, computerChoice) {
       scoreBox.appendChild(tieGame); 
       tieGame.setAttribute('style', 'marginTop: 50px');
     }
-
+    // calls 2 function . ! to turn off rock paper scissor buttons and 2. to show a button that refreshes page to restart game
      disableButtons();
      newGame();
   }
@@ -85,11 +82,13 @@ buttons.forEach((button) => {
   } else {
     console.log('ERROR');
   }
+  // adds chosen classlist - adds some effects when click on rock,paper,scissors buttons
   button.classList.add('chosen');
   playGame(playerChoice, computerChoice);
   });
 });
 
+//following function shows player weapon on left side of screen and cpu weapon on right side so it is obvious what is chosen to the user
 function displayWeapon() {
   if (playerChoice === 'Rock') {
     playerChoiceImg.src = "./img/rock.jpg";
@@ -117,6 +116,8 @@ function displayWeapon() {
   playerWeaponBox.appendChild(playerChoiceImg);
   cpuWeaponBox.appendChild(cpuChoiceDesc);
   cpuWeaponBox.appendChild(cpuChoiceImg);
+
+  //hides choices on left/right of screen after 1.5 seconds
   setTimeout(() => {
     playerWeaponBox.removeChild(playerChoiceImg);
     cpuWeaponBox.removeChild(cpuChoiceImg);
@@ -146,6 +147,7 @@ playerScoreContain.textContent = playerWins;
 computerScoreContain.textContent = computerWins;
 tiedRounds.textContent = ties;
 
+//this function resets the page when the user clicks the 'would you like to play again?' button after 5 rounds
 retryBtn.onclick = () => history.go(0);
 
 
@@ -163,6 +165,8 @@ function newGame() {
   retryBtn.setAttribute('style', 'color: black; padding: 10px; margin: 10px');
 }
 
+
+//this is function and removeTransition(e) function is required to remove animation from weapon select (the yellow highlight)
 btns.forEach(button => button.addEventListener('transitionend', removeTransition));
 
 function removeTransition(e) {
